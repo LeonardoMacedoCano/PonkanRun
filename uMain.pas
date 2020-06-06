@@ -21,15 +21,24 @@ type
     imgChao: TImage;
     imgBg: TImage;
     Button1: TButton;
+    player: TImage;
+    obst1: TImage;
+    obst2: TImage;
+    obst3: TImage;
+    obst4: TImage;
+    obst5: TImage;
 
     procedure carregarImagem(img: TImage; imgNome: String; imgList: TimageList; x, y, altura, largura: Integer);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
 
   private
-    { Private declarations }
+    //Estado Atual || 0 - Jogar | 1 - Jogando | 2 - Pausado | 3 - Perdeu ||
+    FestadoAtual: Integer;
+    Fvelocidade: Integer;
   public
-    { Public declarations }
+    property velocidade: Integer read Fvelocidade write Fvelocidade;
+    property estadoAtual: Integer read FestadoAtual write FestadoAtual;
   end;
 
 var
@@ -74,6 +83,8 @@ begin
   carregarImagem(imgBg,'bg',imgListBg,0,0,321,700);
   carregarImagem(imgChao,'chao',imgListBg,0,321,49,700);
 
+  estadoAtual := 0; //Estado atual = Jogar
+  velocidade  := 8;
 end;
 
 end.
