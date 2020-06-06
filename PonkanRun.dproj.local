@@ -3,10 +3,16 @@
 	<Transactions>
     <Transaction>2020/05/23 19:45:52.000.288,=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2020/06/04 22:20:33.000.149,=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/06/04 22:24:15.847,=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/06/04 22:25:01.233,C:\MeusApp\PonkanRun\uJogo.fmx=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
-    <Transaction>2020/06/04 22:25:01.233,C:\MeusApp\PonkanRun\uJogo.pas=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/06/04 22:25:25.847,C:\MeusApp\PonkanRun\PonkanRun.dproj=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
-  </Transactions>  <ActiveMobileDevice>   <NoProfile iOSSimulator="iPhone5"/>
-  </ActiveMobileDevice>
+    <Transaction>2020/06/04 22:24:15.000.847,=C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/06/04 22:25:01.000.233,C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\MeusApp\PonkanRun\uJogo.fmx</Transaction>
+    <Transaction>2020/06/04 22:25:01.000.233,C:\Users\leona\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\MeusApp\PonkanRun\uJogo.pas</Transaction>
+    <Transaction>2020/06/04 22:25:25.000.847,C:\Users\leona\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\MeusApp\PonkanRun\PonkanRun.dproj</Transaction>
+    <Transaction>2020/06/05 22:28:29.818,C:\MeusApp\PonkanRun\uMain.pas=C:\MeusApp\PonkanRun\uJogo.pas</Transaction>
+    <Transaction>2020/06/05 22:28:29.818,C:\MeusApp\PonkanRun\uMain.fmx=C:\MeusApp\PonkanRun\uJogo.fmx</Transaction>
+    <Transaction>2020/06/06 02:22:10.822,=C:\MeusApp\PonkanRun\classes\UAvatar.pas</Transaction>
+    <Transaction>2020/06/06 02:27:13.513,=C:\MeusApp\PonkanRun\classes\UObst.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
 </BorlandProject>
