@@ -130,18 +130,6 @@ begin
           begin
             frmMain.estadoAtual := 3;
           end
-          else if (TImage(frmMain.Components[i]).Position.X <= frmMain.pnlMain.Position.X) then
-          begin
-            with TImage(frmMain.Components[i]) do
-            begin
-              Bitmap     := nil;
-              Position.X := 616;
-              Position.Y := 146;
-              height     := 55;
-              width      := 89;
-              tag        := -1;
-            end;
-          end
           else
           begin
             TImage(frmMain.Components[i]).Position.X := TImage(frmMain.Components[i]).Position.X - velocidade;
@@ -155,21 +143,22 @@ begin
           begin
             frmMain.estadoAtual := 3;
           end
-          else if (TImage(frmMain.Components[i]).Position.X <= frmMain.pnlMain.Position.X) then
-          begin
-            with TImage(frmMain.Components[i]) do
-            begin
-              Bitmap     := nil;
-              Position.X := 616;
-              Position.Y := 146;
-              height     := 55;
-              width      := 89;
-              tag        := -1;
-            end;
-          end
           else
           begin
             TImage(frmMain.Components[i]).Position.X := TImage(frmMain.Components[i]).Position.X - velocidade;
+          end;
+        end;
+        if (TImage(frmMain.Components[i]).Position.X + TImage(frmMain.Components[i]).Width < frmMain.player.Position.X) then
+        begin
+          frmMain.score := frmMain.score +1;
+          with TImage(frmMain.Components[i]) do
+          begin
+            Bitmap     := nil;
+            Position.X := 616;
+            Position.Y := 146;
+            height     := 55;
+            width      := 89;
+            tag        := -1;
           end;
         end;
       end;

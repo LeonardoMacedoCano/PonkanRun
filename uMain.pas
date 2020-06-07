@@ -38,6 +38,8 @@ type
     imgCenter: TImage;
     lblCenter: TLabel;
     FDTable: TFDTable;
+    imgScore: TImage;
+    lblScore: TLabel;
 
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
@@ -55,11 +57,13 @@ type
     procedure Button1Click(Sender: TObject);
 
   private
-    FestadoAtual: Integer;// 0 - Jogar | 1 - Jogando | 2 - Pausado | 3 - Perdeu
+    FestadoAtual: Integer; // 0 - Jogar | 1 - Jogando | 2 - Pausado | 3 - Perdeu
     Fvelocidade: Integer;
+    Fscore: Integer;
   public
     property velocidade: Integer read Fvelocidade write Fvelocidade;
     property estadoAtual: Integer read FestadoAtual write FestadoAtual;
+    property score: Integer read Fscore write Fscore;
   end;
 
 var
@@ -71,12 +75,12 @@ var
 implementation
 
 {$R *.fmx}
+{$R *.iPhone47in.fmx IOS}
 
 { TForm1 }
 
 procedure TfrmMain.Button1Click(Sender: TObject);
 begin
-  showMessage(FDTable.FieldByName('Nome').AsString);
   TabControl1.ActiveTab := tabJogo;
 end;
 
@@ -215,6 +219,8 @@ begin
   obst5.Tag   := -1;
 
   FDTable.Active := True;
+  lblScore.Position.X := 35;
+  lblScore.Position.Y := 18;
 end;
 
 procedure TfrmMain.Pausar;
@@ -231,20 +237,35 @@ end;
 
 procedure TfrmMain.Timer1Timer(Sender: TObject);
 begin
-  if estadoAtual = 0 then
+  lblScore.Text := 'Score: ' + score.ToString;
+  lblCenter.Text := score.ToString;
+
+  if estadoAtual = 0 then // 0 = Jogar
   begin
     carregarImgCenter('jogar');
+    imgScore.Visible  := False;
+    lblScore.Visible  := False;
+    lblCenter.Visible := False;
+    score := 0;
   end
-  else if estadoAtual = 1 then
+  else if estadoAtual = 1 then // 1 = Jogando
   begin
     carregarImgCenter('');
+    carregarImagem(imgScore,'folha',imgListOutros,0,10,46,140);
+    imgScore.Visible  := True;
+    lblScore.Visible  := True;
+    lblCenter.Visible := False;
   end
-  else if estadoAtual = 3 then
+  else if estadoAtual = 3 then // 3 = Perdeu
   begin
     carregarImgCenter('perdeu');
+    lblCenter.Position.X := imgCenter.Position.X + ((imgCenter.Width - 20) /2);
+    imgScore.Visible  := False;
+    lblScore.Visible  := False;
+    lblCenter.Visible := True;
   end;
 
-  if estadoAtual <> 2 then
+  if estadoAtual <> 2 then // 2 = Pausado
   begin
     avt.atualizar;
     chao.atualizar;
