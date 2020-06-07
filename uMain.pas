@@ -6,7 +6,13 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   System.ImageList, FMX.ImgList, FMX.Controls.Presentation, FMX.StdCtrls,
-  FMX.Objects, FMX.TabControl, Winapi.Windows, uAvatar, uObst, uChao;
+  FMX.Objects, FMX.TabControl, Winapi.Windows, uAvatar, uObst, uChao,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
+  FireDAC.Stan.ExprFuncs, FireDAC.FMXUI.Wait, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
 
 type
   TfrmMain = class(TForm)
@@ -31,6 +37,7 @@ type
     Timer2: TTimer;
     imgCenter: TImage;
     lblCenter: TLabel;
+    FDTable: TFDTable;
 
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
@@ -69,6 +76,7 @@ implementation
 
 procedure TfrmMain.Button1Click(Sender: TObject);
 begin
+  showMessage(FDTable.FieldByName('Nome').AsString);
   TabControl1.ActiveTab := tabJogo;
 end;
 
@@ -194,7 +202,7 @@ begin
 
   ClientHeight := trunc(pnlMain.Height);
   ClientWidth  := trunc(pnlMain.Width -30);
-  TabControl1.ActiveTab := tabJogo;
+  TabControl1.ActiveTab := tabInicio;
 
   carregarImagem(imgBg,'bg',imgListBg,0,0,321,700);
 
@@ -205,6 +213,8 @@ begin
   obst3.Tag   := -1;
   obst4.Tag   := -1;
   obst5.Tag   := -1;
+
+  FDTable.Active := True;
 end;
 
 procedure TfrmMain.Pausar;
