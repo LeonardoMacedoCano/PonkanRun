@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   System.ImageList, FMX.ImgList, FMX.Controls.Presentation, FMX.StdCtrls,
-  FMX.Objects, FMX.TabControl, Winapi.Windows, uAvatar, uObst;
+  FMX.Objects, FMX.TabControl, Winapi.Windows, uAvatar, uObst, uChao;
 
 type
   TfrmMain = class(TForm)
@@ -59,6 +59,7 @@ var
   frmMain: TfrmMain;
   avt: TAvatar;
   obst: TObstaculos;
+  chao: TChao;
 
 implementation
 
@@ -95,6 +96,9 @@ var
   i, altura, largura: Integer;
   s: TSizeF;
 begin
+  altura  := 0;
+  largura := 0;
+
   if img = 'jogar' then
   begin
     altura            := 174;
@@ -186,13 +190,13 @@ procedure TfrmMain.FormShow(Sender: TObject);
 begin
   avt  := TAvatar.Create;
   obst := TObstaculos.Create;
+  chao := Tchao.Create;
 
   ClientHeight := trunc(pnlMain.Height);
   ClientWidth  := trunc(pnlMain.Width -30);
   TabControl1.ActiveTab := tabJogo;
 
   carregarImagem(imgBg,'bg',imgListBg,0,0,321,700);
-  carregarImagem(imgChao,'chao',imgListBg,0,321,49,700);
 
   estadoAtual := 0; // 0 = Jogar
   velocidade  :=  8;
@@ -233,7 +237,7 @@ begin
   if estadoAtual <> 2 then
   begin
     avt.atualizar;
-    //chaoAtualiza;
+    chao.atualizar;
     avt.velocidade:= avt.velocidade + avt.gravidade;
     if (player.Position.Y + player.Height) < imgChao.Position.Y then
     begin

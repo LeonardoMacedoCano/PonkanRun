@@ -4,8 +4,9 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   uMain in 'uMain.pas' {frmMain},
-  UAvatar in 'classes\UAvatar.pas',
-  UObst in 'classes\UObst.pas';
+  uAvatar in 'classes\uAvatar.pas',
+  uObst in 'classes\uObst.pas',
+  uChao in 'classes\uChao.pas';
 
 {$R *.res}
 

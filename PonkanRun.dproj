@@ -338,8 +338,9 @@
             <Form>frmMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="classes\UAvatar.pas"/>
-        <DCCReference Include="classes\UObst.pas"/>
+        <DCCReference Include="classes\uAvatar.pas"/>
+        <DCCReference Include="classes\uObst.pas"/>
+        <DCCReference Include="classes\uChao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
