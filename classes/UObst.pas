@@ -49,22 +49,22 @@ begin
     begin
       altura := 55;
       largura  := 89;
-      y := trunc(frmMain.pnlMain.Height - altura);
-      x := trunc(frmMain.pnlMain.Width - largura);
+      y := trunc(frmMain.imgBg.Height - altura);
+      x := trunc(frmMain.imgBg.Width - largura);
     end
     else if modelo = 1 then
     begin
       altura := 98;
       largura  := 71;
-      y := trunc(frmMain.pnlMain.Height - altura);
-      x := trunc(frmMain.pnlMain.Width - largura);
+      y := trunc(frmMain.imgBg.Height - altura);
+      x := trunc(frmMain.imgBg.Width - largura);
     end
     else if modelo = 2 then
     begin
       altura := 171;
       largura  := 49;
-      y := trunc((frmMain.pnlMain.Height - 61) - altura);
-      x := trunc(frmMain.pnlMain.Width - largura);
+      y := trunc((frmMain.imgBg.Height - 61) - altura);
+      x := trunc(frmMain.imgBg.Width - largura);
     end;
 
     s.Create(largura, altura);
