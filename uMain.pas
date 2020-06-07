@@ -29,10 +29,14 @@ type
     obst5: TImage;
     Timer1: TTimer;
     Timer2: TTimer;
+    imgCenter: TImage;
+    lblCenter: TLabel;
 
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
     procedure verificarAgachar;
+
+    procedure carregarImgCenter(img: String);
     procedure carregarImagem(img: TImage; imgNome: String; imgList: TimageList; x, y, altura, largura: Integer);
 
     procedure Enter;
@@ -44,8 +48,7 @@ type
     procedure Button1Click(Sender: TObject);
 
   private
-    //Estado Atual || 0 - Jogar | 1 - Jogando | 2 - Pausado | 3 - Perdeu ||
-    FestadoAtual: Integer;
+    FestadoAtual: Integer;// 0 - Jogar | 1 - Jogando | 2 - Pausado | 3 - Perdeu
     Fvelocidade: Integer;
   public
     property velocidade: Integer read Fvelocidade write Fvelocidade;
@@ -84,6 +87,45 @@ begin
     Position.Y := y;
     height     := altura;
     width      := largura;
+  end;
+end;
+
+procedure TfrmMain.carregarImgCenter(img: String);
+var
+  i, altura, largura: Integer;
+  s: TSizeF;
+begin
+  if img = 'jogar' then
+  begin
+    altura            := 174;
+    largura           := 206;
+    lblCenter.Visible := False;
+  end
+  else if img = 'perdeu' then
+  begin
+    altura            := 265;
+    largura           := 253;
+    lblCenter.Visible := True;
+  end;
+
+  if img <> '' then
+  begin
+    i := imgListOutros.Source.IndexOf(img);
+    s.Create(largura, altura);
+
+    with imgCenter do
+    begin
+      Bitmap     := imgListOutros.Bitmap(s, i);
+      Position.X := ((pnlMain.Width - 30) - largura) /2;
+      Position.Y := (pnlMain.Height - altura) /2;
+      Height     := altura;
+      Width      := largura;
+      Visible    := True;
+    end;
+  end
+  else
+  begin
+    imgCenter.Visible := False;
   end;
 end;
 
@@ -152,7 +194,7 @@ begin
   carregarImagem(imgBg,'bg',imgListBg,0,0,321,700);
   carregarImagem(imgChao,'chao',imgListBg,0,321,49,700);
 
-  estadoAtual := 0; //Estado atual = Jogar
+  estadoAtual := 0; // 0 = Jogar
   velocidade  :=  8;
   obst1.Tag   := -1;
   obst2.Tag   := -1;
@@ -177,15 +219,15 @@ procedure TfrmMain.Timer1Timer(Sender: TObject);
 begin
   if estadoAtual = 0 then
   begin
-    //carregarImgCenter('jogar');
+    carregarImgCenter('jogar');
   end
   else if estadoAtual = 1 then
   begin
-    //carregarImgCenter('');
+    carregarImgCenter('');
   end
   else if estadoAtual = 3 then
   begin
-    //carregarImgCenter('perdeu');
+    carregarImgCenter('perdeu');
   end;
 
   if estadoAtual <> 2 then
