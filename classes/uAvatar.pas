@@ -1,4 +1,4 @@
-unit UAvatar;
+unit uAvatar;
 
 interface
 
