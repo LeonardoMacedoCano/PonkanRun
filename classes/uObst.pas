@@ -1,4 +1,4 @@
-unit UObst;
+unit uObst;
 
 interface
 
