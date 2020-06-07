@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   System.ImageList, FMX.ImgList, FMX.Controls.Presentation, FMX.StdCtrls,
-  FMX.Objects, FMX.TabControl, Winapi.Windows, uAvatar, UObst;
+  FMX.Objects, FMX.TabControl, Winapi.Windows, uAvatar, uObst;
 
 type
   TfrmMain = class(TForm)
