@@ -315,6 +315,42 @@ begin
     obst.atualizar(velocidade);
     verificarAgachar;
   end;
+
+  if score < 15 then
+  begin
+    velocidade := 8;
+    obst.distancia := 55;
+  end
+  else if score < 30 then
+  begin
+    velocidade := 9;
+    obst.distancia := 45;
+  end
+  else if score < 50 then
+  begin
+    velocidade := 10;
+    obst.distancia := 35;
+  end
+  else if score < 60 then
+  begin
+    velocidade := 12;
+    obst.distancia := 40;
+  end
+  else if score < 75 then
+  begin
+    velocidade := 12;
+    obst.distancia := 50;
+  end
+  else if score < 100 then
+  begin
+    velocidade := 12;
+    obst.distancia := 45;
+  end
+  else
+  begin
+    velocidade := 14;
+    obst.distancia := 45;
+  end;
 end;
 
 procedure TfrmMain.verificarAgachar;

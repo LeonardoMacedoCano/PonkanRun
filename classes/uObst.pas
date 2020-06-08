@@ -8,7 +8,6 @@ uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Varia
   FMX.ImgList;
 
 type TObstaculos = class
-  public
   x: Integer;
   y: Integer;
   altura: Integer;
@@ -16,6 +15,10 @@ type TObstaculos = class
 
   procedure atualizar(velocidade: Integer);
   procedure posicao(velocidade: Integer);
+  private
+    Fdistancia: Integer;
+  published
+    property distancia: Integer read Fdistancia write Fdistancia;
 
   constructor Create;
   destructor Destroy; override;
@@ -23,7 +26,7 @@ end;
 
 var
   tempoInsere: Integer;
-  distancia: Integer;
+  //distancia: Integer;
 
 implementation
 { TObstaculos }
@@ -98,9 +101,8 @@ end;
 
 constructor TObstaculos.Create;
 begin
-  distancia := 40;
+  distancia := 55;
   tempoInsere := distancia + Random(21);
-
 end;
 
 destructor TObstaculos.Destroy;
