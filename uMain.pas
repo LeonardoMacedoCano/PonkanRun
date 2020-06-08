@@ -40,6 +40,7 @@ type
     FDTable: TFDTable;
     imgScore: TImage;
     lblScore: TLabel;
+    lblRecord: TLabel;
 
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
@@ -122,6 +123,12 @@ begin
     altura            := 265;
     largura           := 253;
     lblCenter.Visible := True;
+  end
+  else if img = 'record' then
+  begin
+    altura            := 200;
+    largura           := 318;
+    lblCenter.Visible := True;
   end;
 
   if img <> '' then
@@ -192,7 +199,7 @@ begin
     end;
   end;
 
-  if CharInSet(KeyChar, ['p','P']) then
+  if CharInSet(KeyChar,['p','P']) then
   begin
     pausar;
   end;
@@ -219,8 +226,7 @@ begin
   obst5.Tag   := -1;
 
   FDTable.Active := True;
-  lblScore.Position.X := 35;
-  lblScore.Position.Y := 18;
+  lblScore.Position.Y := 20;
 end;
 
 procedure TfrmMain.Pausar;
@@ -246,6 +252,7 @@ begin
     imgScore.Visible  := False;
     lblScore.Visible  := False;
     lblCenter.Visible := False;
+    lblRecord.Visible := False;
     score := 0;
   end
   else if estadoAtual = 1 then // 1 = Jogando
@@ -255,11 +262,26 @@ begin
     imgScore.Visible  := True;
     lblScore.Visible  := True;
     lblCenter.Visible := False;
+    lblRecord.Visible := False;
   end
   else if estadoAtual = 3 then // 3 = Perdeu
   begin
-    carregarImgCenter('perdeu');
-    lblCenter.Position.X := imgCenter.Position.X + ((imgCenter.Width - 20) /2);
+    if score > FDTable.FieldByName('Record').AsInteger then
+    begin
+       FDTable.Edit;
+       FDTable.FieldByName('Record').AsInteger := score;
+       FDTable.Post;
+       carregarImgCenter('record');
+       lblRecord.Visible := False;
+    end
+    else if lblCenter.Visible = False then
+    begin
+      lblRecord.Text := 'Record: ' + FDTable.FieldByName('Record').AsString;
+      lblRecord.Visible := True;
+      carregarImgCenter('perdeu');
+    end;
+
+    lblCenter.Position.Y := 180;
     imgScore.Visible  := False;
     lblScore.Visible  := False;
     lblCenter.Visible := True;
