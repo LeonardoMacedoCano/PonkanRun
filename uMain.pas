@@ -156,29 +156,32 @@ procedure TfrmMain.Enter;
 var
   i: Integer;
 begin
-  if estadoAtual = 0 then
+  if TabControl1.ActiveTab = tabJogo then
   begin
-    estadoAtual := 1;
-  end
-  else if estadoAtual = 3 then
-  begin
-    estadoAtual := 0;
-    for i:= 0 to frmMain.ComponentCount - 1 do
+    if estadoAtual = 0 then
     begin
-      if (frmMain.Components[i].Name = 'obst1') or
-         (frmMain.Components[i].Name = 'obst2') or
-         (frmMain.Components[i].Name = 'obst3') or
-         (frmMain.Components[i].Name = 'obst4') or
-         (frmMain.Components[i].Name = 'obst5') then
+      estadoAtual := 1;
+    end
+    else if estadoAtual = 3 then
+    begin
+      estadoAtual := 0;
+      for i:= 0 to frmMain.ComponentCount - 1 do
       begin
-        with TImage(frmMain.Components[i]) do
+        if (frmMain.Components[i].Name = 'obst1') or
+           (frmMain.Components[i].Name = 'obst2') or
+           (frmMain.Components[i].Name = 'obst3') or
+           (frmMain.Components[i].Name = 'obst4') or
+           (frmMain.Components[i].Name = 'obst5') then
         begin
-          Bitmap     := nil;
-          Position.X := 616;
-          Position.Y := 146;
-          height     := 55;
-          width      := 89;
-          tag        := -1;
+          with TImage(frmMain.Components[i]) do
+          begin
+            Bitmap     := nil;
+            Position.X := 616;
+            Position.Y := 146;
+            height     := 55;
+            width      := 89;
+            tag        := -1;
+          end;
         end;
       end;
     end;
@@ -364,5 +367,4 @@ begin
     avt.agachar := false;
   end;
 end;
-
 end.
