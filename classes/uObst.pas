@@ -8,16 +8,16 @@ uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Varia
   FMX.ImgList;
 
 type TObstaculos = class
-  x: Integer;
-  y: Integer;
-  altura: Integer;
-  largura: Integer;
-
-  procedure atualizar(velocidade: Integer);
-  procedure posicao(velocidade: Integer);
   private
     Fdistancia: Integer;
-  published
+  public
+    x: Integer;
+    y: Integer;
+    altura: Integer;
+    largura: Integer;
+
+    procedure atualizar(velocidade: Integer);
+    procedure posicao(velocidade: Integer);
     property distancia: Integer read Fdistancia write Fdistancia;
 
   constructor Create;
